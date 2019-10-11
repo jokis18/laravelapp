@@ -3,7 +3,6 @@
     @include('includes.header')
 
     <main role="main">
-      @include('includes.hero')
       @include('includes.main')
     </main>
 
