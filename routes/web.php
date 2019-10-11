@@ -1,7 +1,5 @@
 <?php
 
-use GuzzleHttp\Client;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,13 +11,10 @@ use GuzzleHttp\Client;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 })->middleware(['auth.shop'])->name('home');
 
-Route::get('/', 'ApiController@index')->middleware(['auth.shop']);
+// Route::get('/', 'ApiController@index')->middleware(['auth.shop']);
+
 
