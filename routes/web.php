@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('app');
 })->middleware(['auth.shop'])->name('home');
 
-// Route::get('/', 'ApiController@index')->middleware(['auth.shop']);
+Route::get('/create', function () {
+    return view('/create');
+})->middleware(['auth.shop']);
 
-
+// Route::get('/', 'CustomerController@create')->middleware(['auth.shop']);
+// Route::get('/', 'CustomerController@index')->middleware(['auth.shop']);
