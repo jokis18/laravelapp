@@ -1,64 +1,35 @@
-<div class="album py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card mb-4 box-shadow">
-          <img 
-            class="img-thumbnail" 
-            src="https://cdn1.iconfinder.com/data/icons/avatar-1-2/512/Add_User1-512.png" 
-            height="300px"
-            width="100px"
-            alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Create New Customer</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">
-                  <a href="/create">
-                    View
-                  </a>
-                </button>
-              </div>
-            </div>
-          </div>
+<div class="container-fluid">
+  <div class="row">
+     @include('includes.sidebar') 
+
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+          <h1 class="h2">{{ ShopifyApp::shop()->shopify_domain }}</h1>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card mb-4 box-shadow">
-          <img 
-            class="img-thumbnail" 
-            src="https://www.drupal.org/files/project-images/export-csv.png" 
-            height="300px"
-            width="100px"
-            alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Export into CSV</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              </div>
-            </div>
-          </div>
+
+        <h2>Shop Information</h2>
+        <div class="table-responsive">
+          <table class="table table-striped table-sm">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Domain</th>
+                <th>Country</th>
+                <th>Currency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ $data->name }}</td>
+                <td>{{ $data->email }}</td>
+                <td>{{ $data->domain }}</td>
+                <td>{{ $data->country }}</td>
+                <td>{{ $data->currency }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card mb-4 box-shadow">
-          <img 
-            class="img-thumbnail" 
-            src="https://www.drupal.org/files/project-images/export-csv.png" 
-            height="300px"
-            width="100px"
-            alt="Card image cap">
-            <div class="card-body">
-            <p class="card-text">Import From CSV</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </main>
     </div>
   </div>
-</div>

@@ -4,7 +4,7 @@
 
     <main role="main">
       @include('includes.messages')
-      @include('includes.main')
+      @include('includes.view')
     </main>
     
   @include('includes.scripts')

@@ -11,9 +11,8 @@ class CustomerController extends Controller
         $shop = ShopifyApp::shop();
         $request = $shop->api()->rest('GET', '/admin/api/2019-10/customers.json');
         $data = $request->body->customers;
-        $response = json_encode($data);
 
-        return view('welcome',compact('response'));
+        return view('view', compact('data'));
     }
 
     public function create(Request $request) {

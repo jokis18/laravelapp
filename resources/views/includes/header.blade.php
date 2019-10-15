@@ -1,11 +1,11 @@
-<header>
-  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 box-shadow bg-dark">
-    <a href="https://www.whamedia.com" class="my-0 mr-md-auto font-weight-normal">
-        <img src="https://whamedia.com/wp-content/themes/whamedia-theme/images/whamedia.png" width="30%" height="26px;">
-    </a>
-    <nav class="my-2 my-md-0 mr-md-3">
-        <a href="#" class="btn main-buttons my-2 yellow-text">Export CSV</a>
-        <a href="#" class="btn main-buttons my-2 yellow-text">Import CSV</a>
-    </nav>
-  </div>
-</header>
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://www.whamedia.com">
+    <img src="https://whamedia.com/wp-content/themes/whamedia-theme/images/whamedia.png" width="60%" height="26px;">
+  </a>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a class="btn main-buttons my-2 yellow-text" href="/">Home</a>
+    </li>
+  </ul>
+</nav>

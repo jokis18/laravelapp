@@ -6,7 +6,6 @@
       @include('includes.messages')
       @include('includes.form')
     </main>
-
-    @include('includes.footer')
+    
   @include('includes.scripts')
 </html>

@@ -17,9 +17,17 @@ Route::get('/', function () {
 
 Route::get('/create', function () {
     return view('/create');
-})->middleware(['auth.shop']);
+})->middleware(['auth.shop'])->name('create');
 
+Route::get('/view', function () {
+    return view('/view');
+})->middleware(['auth.shop'])->name('view');
 
-Route::post('/customer', 'CustomerController@create')->middleware(['auth.shop'])->name('customer.create');
-// Route::get('/', 'CustomerController@create')->middleware(['auth.shop']);
+Route::get('/export', function () {
+    return view('/export');
+})->middleware(['auth.shop'])->name('export');
+
+Route::post('/create', 'CustomerController@create')->middleware(['auth.shop'])->name('create');
+Route::get('/view', 'CustomerController@index')->middleware(['auth.shop'])->name('view');
+Route::get('/', 'ApiController@index')->middleware(['auth.shop'])->name('app');
 // Route::get('/', 'CustomerController@index')->middleware(['auth.shop']);
