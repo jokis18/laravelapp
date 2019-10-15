@@ -19,5 +19,7 @@ Route::get('/create', function () {
     return view('/create');
 })->middleware(['auth.shop']);
 
+
+Route::post('/customer', 'CustomerController@create')->middleware(['auth.shop'])->name('customer.create');
 // Route::get('/', 'CustomerController@create')->middleware(['auth.shop']);
 // Route::get('/', 'CustomerController@index')->middleware(['auth.shop']);

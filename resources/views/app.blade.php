@@ -3,6 +3,7 @@
     @include('includes.header')
 
     <main role="main">
+      @include('includes.messages')
       @include('includes.main')
     </main>
 
