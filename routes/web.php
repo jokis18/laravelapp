@@ -30,4 +30,5 @@ Route::get('/export', function () {
 Route::post('/create', 'CustomerController@create')->middleware(['auth.shop'])->name('create');
 Route::get('/view', 'CustomerController@index')->middleware(['auth.shop'])->name('view');
 Route::get('/', 'ApiController@index')->middleware(['auth.shop'])->name('app');
-// Route::get('/', 'CustomerController@index')->middleware(['auth.shop']);
+Route::get('/export', 'PagesController@index')->middleware(['auth.shop']);
+Route::get('/export/{id}', 'PagesController@export')->middleware(['auth.shop']);

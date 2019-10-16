@@ -6,7 +6,7 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
         <h1 class="h2">Create Customer</h1>
       </div>
-
+      @include('includes.messages')
       <form class="form-signin" action="{{ route('create') }}" method="POST">
           @csrf
           <div class="form-label-group">
