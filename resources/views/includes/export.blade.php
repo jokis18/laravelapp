@@ -7,9 +7,15 @@
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
         <h1 class="h2">Export Page to CSV</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-          <div class="btn-group mr-2">
-            <button class="btn btn-sm btn-outline-secondary">Export All</button>
-          </div>
+          @if(count($data) > 0)
+            <div class="btn-group mr-2">
+              <button class="btn btn-sm btn-outline-secondary">
+                <a href="/export/convert_to_CSV">
+                  Export All
+                </a>
+              </button>
+            </div>
+          @endif
         </div>
       </div>
 
@@ -18,7 +24,6 @@
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th>Id</th>
               <th>Page Title</th>
               <th>Handle</th>
               <th>Created At</th>
@@ -29,7 +34,6 @@
             @if(count($data) > 0)
               @foreach($data as $page)
                 <tr>
-                  <td>{{ $page->id }}</td>
                   <td>{{ $page->title }}</td>
                   <td>{{ $page->handle }}</td>
                   <td>{{ $page->created_at }}</td>

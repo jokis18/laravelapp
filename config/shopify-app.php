@@ -137,6 +137,7 @@ return [
                          read_product_listings,
                          read_shipping, write_shipping,
                          read_content, write_content,
+                         read_product_listings,
                          '),
 
     /*

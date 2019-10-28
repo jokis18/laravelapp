@@ -27,13 +27,18 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/collection">
           Export collection
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/import_collection">
           Import collection
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/activity">
+          Activity Log
         </a>
       </li>
     </ul>

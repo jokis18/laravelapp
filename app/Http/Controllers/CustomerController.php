@@ -18,13 +18,16 @@ class CustomerController extends Controller
     public function create(Request $request) {
 
         $this->validate($request, [
-            'inputFirstName' => 'required',
-            'inputLastName' => 'required',
-            'inputEmail' => 'required',
-            'inputPhone' => 'required',
-            'inputPassword' => 'required',
-            'inputPasswordConfirm' => 'required',
-            'inputTags' => 'required',
+            'inputFirstName'                => 'required',
+            'inputLastName'                 => 'required',
+            'inputEmail'                    => 'required',
+            'inputPhone'                    => 'required',
+            'inputPassword'                 => ['required', 
+                                                'min:6', 
+                                                'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/', 
+                                                'confirmed'],
+            'inputPasswordConfirm'          => 'required',
+            'inputTags'                     => 'required',
         ]);
 
         $shop = ShopifyApp::shop();

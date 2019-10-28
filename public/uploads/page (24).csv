@@ -1,0 +1,2 @@
+Collection_ID,Handle,Title,Updated_at,Body_HTML,Published_at,"Sort Order",Template_Suffix,Published_Scope,"Admin GraphQL API ID"
+153293193251,shoes,Shoes,2019-10-21T06:31:14-04:00,"Some shoes",2019-10-21T06:30:18-04:00,best-selling,,web,gid://shopify/Collection/153293193251
