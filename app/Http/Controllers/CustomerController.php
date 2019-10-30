@@ -36,7 +36,7 @@ class CustomerController extends Controller
             'inputEmail'                    => 'required',
             'inputPhone'                    => 'required',
             'inputPassword'                 => ['required', 
-                                                'min:6', 
+                                                'min:5', 
                                                 'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X]).*$/'],
             'inputPasswordConfirm'          => 'required',
             'inputTags'                     => 'required',
