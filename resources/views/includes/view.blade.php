@@ -7,12 +7,10 @@
           <h1 class="h2">View Customers</h1>
         </div>
   
-        <h2>Customers:</h2>
         <div class="table-responsive">
           <table class="table table-striped table-sm">
             <thead>
               <tr>
-                <th>Id</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
@@ -24,7 +22,6 @@
               @if(count($data) > 0)
                 @foreach($data as $customer)
                   <tr>
-                    <td>{{ $customer->id }}</td>
                     <td>{{ $customer->first_name }}</td>
                     <td>{{ $customer->last_name }}</td>
                     <td>{{ $customer->email }}</td>

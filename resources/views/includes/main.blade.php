@@ -12,9 +12,9 @@
           <table class="table table-striped table-sm">
             <thead>
               <tr>
-                <th>Name</th>
+                <th>Shop Name</th>
                 <th>Email</th>
-                <th>Domain</th>
+                <th>Domain Name</th>
                 <th>Country</th>
                 <th>Currency</th>
               </tr>

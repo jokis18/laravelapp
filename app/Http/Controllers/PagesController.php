@@ -7,6 +7,40 @@ use OhMyBrew\ShopifyApp\Facades\ShopifyApp;
 
 class PagesController extends Controller
 {
+    public $headers;
+    public $columns;
+
+    function __construct()
+    {
+        $this->headers = [
+            'Content-type'        => 'text/csv',
+            'Content-Disposition' => 'attachment; filename=page.csv',
+            'Pragma'              => 'public',
+            'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',
+            'Expires'             => '0'
+        ];
+
+        $this->columns = [
+            'ID',
+            'Title',
+            'Shop_ID',
+            'Handle',
+            'Body_HTML',
+            'Author',
+            'Created_at',
+            'Updated_at',
+            'Published_at',
+            'Template_suffix',
+            'Admin_GraphQL_API_ID'
+        ];
+    }
+
+    /**
+     * Show the list of all pages.
+     *
+     * @return View
+     * 
+     */
     public function index() 
     {
         $shop = ShopifyApp::shop();
@@ -16,35 +50,21 @@ class PagesController extends Controller
         return view('export', compact('data'));
     }
 
+    /**
+     * Export selected page to the csv file.
+     * 
+     * @param int $id
+     * @return View
+     * 
+     */
     public function export($id) 
     {
-        $headers = [
-            'Content-type'        => 'text/csv',
-            'Content-Disposition' => 'attachment; filename=page.csv',
-            'Pragma'              => 'public',
-            'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',
-            'Expires'             => '0'
-        ];
-
         $shop = ShopifyApp::shop();
         $request = $shop->api()->rest('GET', '/admin/api/2019-10/pages/'.$id.'.json', );
         $data = $request->body->page; 
         $list = json_decode(json_encode($data), true);
 
-        $columns = array(
-            'ID',
-            'Title',
-            'Shop_ID',
-            'Handle',
-            'Body_HTML',
-            'Author',
-            'Created_at',
-            'Updated_at',
-            'Published_at',
-            'Template_suffix',
-            'Admin_GraphQL_API_ID'
-        );
-
+        $columns = $this->columns;
         $callback = function () use ($list, $columns)
         {
             $fh = fopen('php://output', 'w') or die ("Can't find the file");
@@ -53,38 +73,23 @@ class PagesController extends Controller
             fclose($fh);
         };
 
-        return response()->stream($callback, 200, $headers);
+        return response()->stream($callback, 200, $this->headers);
     }
 
+    /**
+     * Export all pages to the csv file.
+     * 
+     * @return View
+     * 
+     */
     public function exportAll() 
-    {
-        $headers = [
-            'Content-type'        => 'text/csv',
-            'Content-Disposition' => 'attachment; filename=page.csv',
-            'Pragma'              => 'public',
-            'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',
-            'Expires'             => '0'
-        ];
-
+    {        
         $shop = ShopifyApp::shop();
         $request = $shop->api()->rest('GET', '/admin/api/2019-10/pages.json', );
         $data = $request->body->pages; 
         $list = json_decode(json_encode($data), true);
 
-        $columns = array(
-            'ID',
-            'Title',
-            'Shop_ID',
-            'Handle',
-            'Body_HTML',
-            'Author',
-            'Created_at',
-            'Updated_at',
-            'Published_at',
-            'Template_suffix',
-            'Admin_GraphQL_API_ID'
-        );
-
+        $columns = $this->columns;
         $callback = function () use ($list, $columns)
         {
             $fh = fopen('php://output', 'w') or die ("Can't find the file");
@@ -96,23 +101,33 @@ class PagesController extends Controller
             fclose($fh);
         };
 
-        return response()->stream($callback, 200, $headers);
+        return response()->stream($callback, 200, $this->headers);
     }
 
+    /**
+     * Import page from the csv file.
+     * 
+     * @param Request $request
+     * @return View
+     * 
+     */
     public function import(Request $request) 
     {
+        //Make sure, that file exists
         if ($request->file('file') != null)
         {
+            //Initialize file atributes
             $file = $request->file('file');
-            
             $filename = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension();
             $tempPath = $file->getRealPath();
             $fileSize = $file->getSize();
             $mimeType = $file->getMimeType();
 
+            //Valid file extension
             $valid_extension = array('csv');
 
+            //Valid file size
             $maxFileSize = 2097152;
 
             if(in_array(strtolower($extension), $valid_extension))
@@ -121,8 +136,11 @@ class PagesController extends Controller
                     $location = 'uploads';
                     $file->move($location, $filename);
                     $filepath = public_path($location.'/'.$filename);
+
+                    //Read the file
                     $handle = fopen($filepath, 'r');
 
+                    //Run through the file minus first row
                     $rowCounter = 0;
                     while(($rowData = fgetcsv($handle, 1000, ',')) != False) 
                     {
@@ -137,6 +155,7 @@ class PagesController extends Controller
                     }
                     fclose($handle);
 
+                    //Make a POST request to import the page
                     $shop = ShopifyApp::shop();
                     for ($i = 0; $i < count($assocData); $i++) {
                         $response = $shop->api()->rest('POST', '/admin/api/2019-10/pages.json', [
@@ -155,7 +174,6 @@ class PagesController extends Controller
                 return redirect ('/import')->with('error', 'Invalid file extension');
             }
         }
-
         return redirect ('/export')->with('success', 'File Uploaded');
     }
 }

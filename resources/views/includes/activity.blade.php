@@ -8,15 +8,14 @@
           <h1 class="h2">View Recent Activity</h1>
         </div>
   
-        <h2>Recent Activity:</h2>
         <div class="table-responsive">
           <table class="table table-striped table-sm">
             <thead>
               <tr>
-                <th>URL</th>
-                <th>IP</th>
-                <th>CREATED_AT</th>
-                <th>RESPONSE</th>
+                <th>URL:</th>
+                <th>IP:</th>
+                <th>DATE:</th>
+                <th>RESPONSE:</th>
               </tr>
             </thead>
             <tbody>
@@ -27,12 +26,7 @@
                     <div class="modal-dialog modal-lg" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Response</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                          @if(($request->response[9]) == "2")
+                            @if(($request->response[9]) == "2")
                             <div class="modal-body alert-success">
                                 <h5 class="modal-title">Status Code: 200</h5>
                             </div>
@@ -45,6 +39,10 @@
                                     <h5 class="modal-title">Status Code: 500</h5>
                                 </div>
                           @endif
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
                         <div class="modal-body">
                           {{ $request->response }}
                         </div>

@@ -24,8 +24,7 @@ class CustomerController extends Controller
             'inputPhone'                    => 'required',
             'inputPassword'                 => ['required', 
                                                 'min:6', 
-                                                'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/', 
-                                                'confirmed'],
+                                                'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X]).*$/'],
             'inputPasswordConfirm'          => 'required',
             'inputTags'                     => 'required',
         ]);
@@ -42,6 +41,7 @@ class CustomerController extends Controller
                 'tags' => $request->input('inputTags'),
             ]
         ]);
+        
         return redirect ('/create')->with('success', 'Customer Created');
     }
 }
