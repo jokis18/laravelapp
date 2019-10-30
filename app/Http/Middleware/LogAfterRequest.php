@@ -7,15 +7,16 @@ class LogAfterRequest {
     {
         return $next($request);
     }
+
     public function terminate($request, $response)
     {
-      $url=$request->fullUrl();
-      $ip=$request->ip();
-      $r=new \App\Requests();
-      $r->ip=$ip;
-      $r->url=$url;
-      $r->request=json_encode($request->all());
-      $r->response=$response;
+      $url = $request->fullUrl();
+      $ip = $request->ip();
+      $r = new \App\Requests();
+      $r->ip = $ip;
+      $r->url = $url;
+      $r->request = json_encode($request->all());
+      $r->response = json_decode(json_encode($response->all()), true);
       $r->save();
     }
 }
