@@ -7,6 +7,12 @@ use OhMyBrew\ShopifyApp\Facades\ShopifyApp;
 
 class CustomerController extends Controller
 {
+    /**
+     * Show the list of all customers.
+     *
+     * @return View
+     * 
+     */
     public function index() {
         $shop = ShopifyApp::shop();
         $request = $shop->api()->rest('GET', '/admin/api/2019-10/customers.json');
@@ -15,6 +21,13 @@ class CustomerController extends Controller
         return view('view', compact('data'));
     }
 
+    /**
+     * Create customer.
+     * 
+     * @param Request $request
+     * @return View
+     * 
+     */
     public function create(Request $request) {
 
         $this->validate($request, [
@@ -41,7 +54,7 @@ class CustomerController extends Controller
                 'tags' => $request->input('inputTags'),
             ]
         ]);
-        
+
         return redirect ('/create')->with('success', 'Customer Created');
     }
 }
