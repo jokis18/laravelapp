@@ -20,4 +20,17 @@ class ApiController extends Controller
 
         return view('app',compact('data'));
     }
+
+    /**
+     * Show total number of products in the shop.
+     *
+     * @return View
+     * 
+     */
+    public function productCount() {
+        $shop = ShopifyApp::shop();
+        $request = $shop->api()->rest('GET', '/admin/api/2019-10/products/count.json');
+
+        return view('app',compact('request'));
+    }
 }

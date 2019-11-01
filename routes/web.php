@@ -26,6 +26,7 @@ Route::get('/view', function () {
 Route::post('/create', 'CustomerController@create')->middleware(['auth.shop'])->name('create');
 Route::get('/view', 'CustomerController@index')->middleware(['auth.shop'])->name('view');
 Route::get('/', 'ApiController@index')->middleware(['auth.shop'])->name('app');
+Route::get('/', 'ApiController@productCount')->middleware(['auth.shop'])->name('count');
 
 /*
 |--------------------------------------------------------------------------

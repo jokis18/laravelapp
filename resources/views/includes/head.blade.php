@@ -16,6 +16,8 @@
       integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" 
       crossorigin="anonymous"
     >
+    <!--FontAwesome Icons-->
+    <script src="https://kit.fontawesome.com/3225022780.js" crossorigin="anonymous"></script>
 
     <!-- Custom styles for this template -->
     @include('includes.styles')

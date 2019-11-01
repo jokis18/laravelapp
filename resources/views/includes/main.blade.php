@@ -8,6 +8,44 @@
         </div>
 
         <h2>Shop Information</h2>
+
+        <div class="card-deck">
+          <div class="card text-center">
+            <span style="font-size: 6em; margin-top: 10px;">
+              <i class="fas fa-box-open"></i>
+            </span>
+            <div class="card-body">
+              <h5 class="card-title">TOTAL PRODUCTS: {{ $request->body->count }}</h5>
+            </div>
+          </div>
+          <div class="card text-center">
+            <span style="font-size: 6em; margin-top: 10px;">
+              <i class="fas fa-paste"></i>
+            </span>
+            <div class="card-body">
+              <h5 class="card-title">TOTAL COLLECTIONS</h5>
+            </div>
+          </div>
+          <div class="card text-center">
+            <span style="font-size: 6em; margin-top: 10px;">
+              <i class="fas fa-file-alt"></i>
+            </span>
+            <div class="card-body">
+              <h5 class="card-title">TOTAL PAGES</h5>
+            </div>
+          </div>
+          <div class="card text-center">
+            <span style="font-size: 6em; margin-top: 10px;">
+              <i class="fas fa-users"></i>
+            </span>
+            <div class="card-body">
+              <h5 class="card-title">TOTAL CUSTOMERS</h5>
+            </div>
+          </div>
+        </div>
+
+        <br><br>
+
         <div class="table-responsive">
           <table class="table table-striped table-sm">
             <thead>
