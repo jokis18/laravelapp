@@ -52,6 +52,19 @@ class CollectionsController extends Controller
     }
 
     /**
+     * Show total number of custom_collections in the shop.
+     *
+     * @return View
+     * 
+     */
+    public function collectionCount() {
+        $shop = ShopifyApp::shop();
+        $collections = $shop->api()->rest('GET', '/admin/api/2019-10/custom_collections/count.json');
+
+        return view('app', compact('collections'));
+    }
+
+    /**
      * Export selected collection to the csv file.
      * 
      * @param int $id
