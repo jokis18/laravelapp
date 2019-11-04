@@ -26,6 +26,9 @@ Route::get('/view', function () {
 Route::post('/create', 'CustomerController@create')->middleware(['auth.shop'])->name('create');
 Route::get('/view', 'CustomerController@index')->middleware(['auth.shop'])->name('view');
 Route::get('/', 'ApiController@index')->middleware(['auth.shop'])->name('app');
+// Route::get('/', 'CustomerController@customersCount')->middleware(['auth.shop']);
+// Route::get('/', 'PagesController@pagesCount')->middleware(['auth.shop']);
+// Route::get('/', 'CollectionsController@collectionCount')->middleware(['auth.shop']);
 
 /*
 |--------------------------------------------------------------------------
