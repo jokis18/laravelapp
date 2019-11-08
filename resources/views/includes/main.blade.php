@@ -9,7 +9,7 @@
               @if(count($info) > 0)
                 <div class="btn-group mr-2">
                   <button class="btn btn-sm btn-outline-secondary">
-                    <a href="/export/convert_to_CSV">
+                    <a href="/export/export_all">
                       Export everything to CSV
                     </a>
                   </button>
